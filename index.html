@@ -3,204 +3,64 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Demo Asistente Casa del Audio</title>
+  <title>Asistente Casa del Audio - Demo Embebida</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fdfdfd, #f2f2f2);
+      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
-      color: #333;
+      text-align: center;
     }
 
     header {
-      background: #d32f2f;
+      background-color: #d32f2f;
       color: white;
-      text-align: center;
-      padding: 40px 20px 20px;
+      padding: 30px 10px;
     }
 
     header img {
       height: 60px;
-      margin-bottom: 15px;
     }
 
-    .hero {
-      padding: 40px 20px;
-      text-align: center;
-      background-color: white;
-    }
-
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #666;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .cta {
-      text-align: center;
+    main {
       padding: 40px 20px;
     }
 
-    .cta button {
-      background-color: #d32f2f;
-      color: white;
-      font-size: 20px;
-      padding: 15px 30px;
+    iframe {
+      width: 100%;
+      max-width: 480px;
+      height: 600px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin: 10px;
-    }
-
-    .cta input {
-      font-size: 16px;
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      margin-top: 20px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 40px 20px;
-      gap: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .feature {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      flex: 1 1 250px;
-      max-width: 280px;
-      text-align: center;
-    }
-
-    .feature h3 {
-      margin-top: 10px;
-      color: #d32f2f;
-    }
-
-    .feature p {
-      font-size: 15px;
-      color: #555;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
     }
 
     footer {
       background-color: #222;
       color: white;
-      text-align: center;
       padding: 20px;
       font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      .cta button {
-        width: 100%;
-      }
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Logo_Casa_del_Audio.png" alt="Casa del Audio">
-  <h1>Asistente Virtual</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Logo_Casa_del_Audio.png" alt="Logo">
+  <h1>Demo del Asistente Virtual</h1>
 </header>
 
-<section class="hero">
-  <h1>Descubrí el futuro de la atención al cliente</h1>
-  <p>Interactuá con nuestro asistente conversacional y recibí ayuda sobre productos, promociones, financiación y más.</p>
-</section>
-
-<section class="cta">
-  <p>Probalo escribiendo o hablándole al asistente (solo Android/Chrome):</p>
-  <input id="userInput" placeholder="Escribí o dictá tu consulta" />
-  <br />
-  <button id="voiceButton" title="Hablar con el asistente">🎤 Hablar</button>
-  <button onclick="window.open('https://casadelaudio.onrender.com/', '_blank')">💬 Probar Asistente Ahora</button>
-</section>
-
-<section class="features">
-  <div class="feature">
-    <h3>Atención 24/7</h3>
-    <p>Disponible en cualquier momento para ayudarte, sin esperas.</p>
-  </div>
-  <div class="feature">
-    <h3>Respuestas por voz</h3>
-    <p>Escuchá las respuestas del asistente como si fuera una conversación real.</p>
-  </div>
-  <div class="feature">
-    <h3>Reconocimiento de voz</h3>
-    <p>Hablale al asistente directamente en la versión de pantalla completa.</p>
-  </div>
-</section>
+<main>
+  <p>Interactuá con el asistente de Casa del Audio directamente desde esta página.</p>
+  <iframe src="https://asistente-casa-del-audio-whisper.onrender.com/"></iframe>
+</main>
 
 <footer>
-  &copy; 2025 Casa del Audio | Demo creada con inteligencia artificial
+  &copy; 2025 Casa del Audio · Demo creada con tecnología de inteligencia artificial
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const micButton = document.getElementById("voiceButton");
-  const userInput = document.getElementById("userInput");
-
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  if (!SpeechRecognition || isIOS) {
-    micButton.disabled = true;
-    micButton.innerText = "🎤 No disponible";
-    micButton.title = "El reconocimiento de voz no está soportado en este dispositivo.";
-    const warning = document.createElement("div");
-    warning.style.color = "#d32f2f";
-    warning.style.fontSize = "14px";
-    warning.style.marginTop = "10px";
-    warning.innerText = "⚠️ En este dispositivo no está disponible el reconocimiento de voz. Usá Android con Chrome.";
-    micButton.parentElement.appendChild(warning);
-    return;
-  }
-
-  micButton.onclick = () => {
-    try {
-      const recognition = new SpeechRecognition();
-      recognition.lang = 'es-AR';
-      recognition.start();
-
-      recognition.onresult = function(event) {
-        const transcript = event.results[0][0].transcript;
-        userInput.value = transcript;
-        console.log("Texto reconocido:", transcript);
-      };
-
-      recognition.onerror = function(event) {
-        alert("Error en el reconocimiento: " + event.error);
-      };
-    } catch (err) {
-      alert("El reconocimiento no está permitido o falló.");
-    }
-  };
-});
-</script>
 
 </body>
 </html>

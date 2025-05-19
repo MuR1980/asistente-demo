@@ -148,10 +148,6 @@
 
 </section>
 
-<section class="cta">
-  <p>También podés hablar con el asistente (solo Android/Chrome):</p>
-  <button id="voiceButton" title="Hablar con el asistente">🎤 Hablar</button>
-
   <h2>🎥 Video de presentación</h2>
   <p>Mirá cómo funciona el asistente en esta demo grabada.</p>
   <div style="margin-top:20px;">
@@ -185,38 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
     warning.style.marginTop = "10px";
     warning.innerText = "⚠️ En este dispositivo no está disponible el reconocimiento de voz. Usá Android con Chrome.";
     micButton.parentElement.appendChild(warning);
-    return;
-  }
-
-  micButton.onclick = () => {
-    try {
-      const recognition = new SpeechRecognition();
-      recognition.lang = 'es-AR';
-      recognition.start();
-
-      recognition.onresult = function(event) {
-        const transcript = event.results[0][0].transcript;
-        document.getElementById("userInput")?.value = transcript;
-        handleUserInput?.();
-      };
-
-      recognition.onerror = function(event) {
-        alert("Error en el reconocimiento: " + event.error);
-      };
-    } catch (err) {
-      alert("El reconocimiento no está permitido o falló.");
-    }
-  };
-});
-</script>
-  const micButton = document.getElementById("voiceButton");
-
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  if (!SpeechRecognition) {
-    micButton.disabled = true;
-    micButton.innerText = "🎤 No disponible";
-    micButton.title = "El reconocimiento de voz no está soportado en este navegador.";
     return;
   }
 

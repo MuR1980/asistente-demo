@@ -4,60 +4,112 @@
 <head>
   <meta charset="UTF-8">
   <title>Demo Asistente Casa del Audio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fdfdfd, #f2f2f2);
       margin: 0;
       padding: 0;
-      text-align: center;
+      color: #333;
     }
 
     header {
-      background-color: #d32f2f;
+      background: #d32f2f;
       color: white;
-      padding: 30px 10px;
+      text-align: center;
+      padding: 40px 20px 20px;
     }
 
     header img {
-      height: 50px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .hero {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: white;
+    }
+
+    .hero h1 {
+      font-size: 36px;
       margin-bottom: 10px;
     }
 
-    main {
-      padding: 50px 20px;
-    }
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    p {
+    .hero p {
       font-size: 18px;
-      color: #555;
-      margin-bottom: 30px;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    button {
+    .cta {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .cta button {
       background-color: #d32f2f;
       color: white;
+      font-size: 20px;
+      padding: 15px 30px;
       border: none;
-      padding: 14px 24px;
-      font-size: 18px;
       border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    button:hover {
+    .cta button:hover {
       background-color: #b71c1c;
     }
 
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .feature {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      flex: 1 1 250px;
+      max-width: 280px;
+      text-align: center;
+    }
+
+    .feature h3 {
+      margin-top: 10px;
+      color: #d32f2f;
+    }
+
+    .feature p {
+      font-size: 15px;
+      color: #555;
+    }
+
     footer {
-      background: #222;
+      background-color: #222;
       color: white;
-      padding: 15px;
-      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .cta button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -65,18 +117,35 @@
 
 <header>
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Logo_Casa_del_Audio.png" alt="Casa del Audio">
-  <h1>Demo del Asistente</h1>
-  <p>Conocé cómo funciona nuestro asistente conversacional con IA</p>
+  <h1>Asistente Virtual</h1>
 </header>
 
-<main>
-  <h2>¿Querés hablar con el asistente?</h2>
-  <p>Hace clic en el botón para abrirlo en una nueva pestaña con reconocimiento de voz habilitado.</p>
-  <button onclick="window.open('https://casadelaudio.onrender.com/', '_blank')">Abrir Asistente</button>
-</main>
+<section class="hero">
+  <h1>Descubrí el futuro de la atención al cliente</h1>
+  <p>Interactuá con nuestro asistente conversacional y recibí ayuda sobre productos, promociones, financiación y más.</p>
+</section>
+
+<section class="cta">
+  <button onclick="window.open('https://casadelaudio.onrender.com/', '_blank')">💬 Probar Asistente Ahora</button>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <h3>Atención 24/7</h3>
+    <p>Disponible en cualquier momento para ayudarte, sin esperas.</p>
+  </div>
+  <div class="feature">
+    <h3>Respuestas por voz</h3>
+    <p>Escuchá las respuestas del asistente como si fuera una conversación real.</p>
+  </div>
+  <div class="feature">
+    <h3>Reconocimiento de voz</h3>
+    <p>Hablale al asistente directamente en la versión de pantalla completa.</p>
+  </div>
+</section>
 
 <footer>
-  <p>&copy; 2025 Casa del Audio | Demo de tecnología con IA</p>
+  &copy; 2025 Casa del Audio | Demo creada con inteligencia artificial
 </footer>
 
 </body>

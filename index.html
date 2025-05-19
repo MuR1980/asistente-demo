@@ -156,7 +156,7 @@
   <p>Mirá cómo funciona el asistente en esta demo grabada.</p>
   <div style="margin-top:20px;">
     <iframe width="100%" height="315" style="max-width:560px;border:none;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);" 
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+      src="TBD" 
       title="Demo Asistente Casa del Audio" allowfullscreen>
     </iframe>
   </div>
@@ -170,6 +170,45 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  const micButton = document.getElementById("voiceButton");
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition || isIOS) {
+    micButton.disabled = true;
+    micButton.innerText = "🎤 No disponible";
+    micButton.title = "El reconocimiento de voz no está soportado en este dispositivo.";
+    const warning = document.createElement("div");
+    warning.style.color = "#d32f2f";
+    warning.style.fontSize = "14px";
+    warning.style.marginTop = "10px";
+    warning.innerText = "⚠️ En este dispositivo no está disponible el reconocimiento de voz. Usá Android con Chrome.";
+    micButton.parentElement.appendChild(warning);
+    return;
+  }
+
+  micButton.onclick = () => {
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'es-AR';
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById("userInput")?.value = transcript;
+        handleUserInput?.();
+      };
+
+      recognition.onerror = function(event) {
+        alert("Error en el reconocimiento: " + event.error);
+      };
+    } catch (err) {
+      alert("El reconocimiento no está permitido o falló.");
+    }
+  };
+});
+</script>
   const micButton = document.getElementById("voiceButton");
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
